@@ -5,7 +5,25 @@ print(f'Secret Key: {SECRET_KEY}\n')
 
 
 def validate_otp():
-    print('Still Under Development')
+    secret_key = input('Provide Secret Key: ')
+    totp = pyotp.TOTP(secret_key)
+    tried_amounts = 0
+
+    valid_otp = False
+    while not valid_otp:
+        tried_amounts = tried_amounts + 1
+        if tried_amounts > 3:
+            print('To Many Validation Attempts!')
+            exit()
+
+        otp = input('Enter OTP: ')
+        valid_otp = totp.verify(otp)
+        if valid_otp:
+            print('Valid OTP')
+            print('YAY!')
+            exit()
+        else:
+            print('Invalid OTP')
 
 
 def gen_qr_code():
