@@ -4,6 +4,10 @@ SECRET_KEY = pyotp.random_base32()
 print(f'Secret Key: {SECRET_KEY}\n')
 
 
+def validate_otp():
+    print('Still Under Development')
+
+
 def gen_qr_code():
     email = input('Enter Email: ')
     issuer_name = input('Enter Issuer Name: ')
@@ -34,11 +38,9 @@ def init():
     if entered_option not in options:
         print('Invalid Option Entered')
         exit()
-    else:
-        print('lekke')
 
     function_library = {
-        '1': '',
+        '1': validate_otp,
         '2': gen_qr_code
     }
 
